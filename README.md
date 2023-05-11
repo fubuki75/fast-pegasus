@@ -109,23 +109,24 @@ similar to the toy example code below:
 ```python
 import numpy as np
 """
-k,v: represents input key and values, shape is [1, d_model].
-past_key_value: [past_k,past_v] [2,dec_len-1,d_v]
+k,v: represents input key and values, each shape is [1, d_model].
+W_k,W_v: projection matrix, [d_model,d_v]
+past_key_value: comprsing of past_k and past_v, shape is [2,dec_len-1,d_v]
 """
 # first project
 k = np.matmul(k, W_k)
 v = np.matmul(v, W_v)
 
 if past_key_value is not None: # then concat
-    k = np.concatenate([past_key_value[0], k], axis=0)
-    v = np.concatenate([past_key_value[1], v], axis=0)
+    k = np.concatenate([past_key_value[0], k], axis=0) # k (dec_len,d_v)
+    v = np.concatenate([past_key_value[1], v], axis=0) # v (dec_len,d_v)
 ```
 * Why `past_key_values` will not be influenced by new tokens?
 
-Because the attention of decoder block is actually an upper-triangle-shaped mask, which prevent the previous tokens attending to new ones.
+Because the attention mask of decoder block is actually an upper-triangle, which prevent the previous tokens attending to new ones.
 
 ## Inference speed test results
-I test the inference speed locally, more details in `runtime_test.py`. My CPU is AMD Ryzen 7 5800X 8-Core Processor 3.80 GHz.
+I test the inference speed locally, more details in `runtime_test.py` (pegasus-large). My CPU is AMD Ryzen 7 5800X 8-Core Processor 3.80 GHz.
 
 | param & results           | 1 | 2 | 3     | 4 | 5 |
 |---------------------------| --- | --- |-------| --- | --- |
