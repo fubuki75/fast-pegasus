@@ -13,7 +13,7 @@ Install using requirements.txt file.
 
 ```bash
 git clone https://github.com/fubuki75/fast-pegasus
-cd fast-Bart
+cd fast-Pegasus
 pip install -r requirements.txt
 ```
 ---
