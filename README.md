@@ -89,7 +89,7 @@ model = export_and_get_onnx_model(model_name, custom_output_path)
 In addition to the implementation details mentioned in fastT5, here we discuss about `past_key_values`
 * Why do the transformers models maintain `past_key_values`? 
 
-`past_key_values` is a common technique adopted in transformers models. like T5, Bart and Pegasus. According to the [official documentations](https://huggingface.co/docs/transformers/main/en/model_doc/t5#transformers.T5ForConditionalGeneration.forward.past_key_values):
+`past_key_values` is a common technique adopted in transformers models, like T5, Bart and Pegasus. According to the [official documentations](https://huggingface.co/docs/transformers/main/en/model_doc/t5#transformers.T5ForConditionalGeneration.forward.past_key_values):
 
 `past_key_values` `(tuple(tuple(torch.FloatTensor))` of length `config.n_layers` with each tuple having 4 tensors of shape `(batch_size, num_heads, sequence_length - 1, embed_size_per_head)`) — Contains precomputed key and value hidden states of the attention blocks. Can be used to speed up decoding.
 
