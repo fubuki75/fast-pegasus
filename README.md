@@ -71,7 +71,7 @@ model = OnnxPegasus(model_or_model_path, model_sessions)
                       ...
 ```
 ##### custom output paths 
-By default, fastBart creates a `model` folder in the current directory and stores all the models. You can provide a custom path for a folder to store the exported models. And to run already `exported models` that are stored in a custom folder path: use `get_onnx_model(onnx_models_path="/path/to/custom/folder/")`
+By default, fastPegasus creates a `model` folder in the current directory and stores all the models. You can provide a custom path for a folder to store the exported models. And to run already `exported models` that are stored in a custom folder path: use `get_onnx_model(onnx_models_path="/path/to/custom/folder/")`
 
 ```python
 from fastPegasus import export_and_get_onnx_model, get_onnx_model
